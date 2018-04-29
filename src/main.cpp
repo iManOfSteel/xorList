@@ -1,18 +1,25 @@
 #include "xorList/StackAllocator.h"
+#include "xorList/XorList.h"
 #include <list>
 #include <iostream>
 #include <vector>
+#include <memory>
 
 int main(){
-    std::list<int, std::allocator<int>> def;
-    std::list<int, StackAllocator<int>> my;
-    int t = clock();
-    for(int i = 0; i < 10000; i++)
-        def.emplace_back(i);
-    std::cout << clock() - t << std::endl;
-    t = clock();
-    for(int i = 0; i < 10000; i++)
-        my.emplace_back(i);
-    std::cout << clock() - t << std::endl;
+    StackAllocator<double> alloc;
+    XorList<int, std::allocator<int>> list;
+    for(int i = 0; i < 100; i++)
+        list.push_back(i);
+    for(int i = -1; i > -100; i--)
+        list.push_front(i);
+    for(auto it = list.begin(); it!= list.end(); it++)
+        std::cout << (*it) << ' ';
+    auto it = list.begin();
+    it++;
+    it++;
+    //list.insert_before(list.begin(), 2);
+    std::cout << std::endl;
+    for(auto it = list.begin(); it!= list.end(); it++)
+        std::cout << (*it) << ' ';
     return 0;
 }

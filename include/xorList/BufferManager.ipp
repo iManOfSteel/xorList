@@ -15,5 +15,5 @@ typename BufferManager<T>::pointer BufferManager<T>::allocate(size_t size) {
         curPos = 0;
     }
     curPos += size;
-    return buffer.get() + (curPos - size) * sizeof(T);
+    return buffer.get() + (curPos - size);
 }

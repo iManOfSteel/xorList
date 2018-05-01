@@ -2,10 +2,10 @@
 #include "XorList.h"
 
 template<typename T, typename Allocator>
-XorList<T, Allocator>::XorList(Allocator alloc):_size(0), first(NULL), last(NULL) {}
+XorList<T, Allocator>::XorList(Allocator alloc): alloc(XorList<T, Allocator>::ItemAllocator()), _size(0), first(NULL), last(NULL) {}
 
 template<typename T, typename Allocator>
-XorList<T, Allocator>::XorList(size_t count, const T &value, const Allocator &alloc):_size(0), first(NULL), last(NULL) {
+XorList<T, Allocator>::XorList(size_t count, const T &value, const Allocator &alloc): alloc(XorList<T, Allocator>::ItemAllocator()), _size(0), first(NULL), last(NULL) {
     for(size_t i = 0; i < count; i++)
         push_back(value);
 }
@@ -22,7 +22,7 @@ XorList<T, Allocator>::XorList(XorList &&other): alloc(other.alloc), first(other
 
 template<typename T, typename Allocator>
 XorList<T, Allocator>::~XorList() {
-    for(size_t i = 0; i < _size; i++)
+    while(_size)
         pop_back();
 }
 

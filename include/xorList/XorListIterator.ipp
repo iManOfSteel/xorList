@@ -35,7 +35,7 @@ typename XorListIterator<T>::pointer XorListIterator<T>::operator->() {
 
 template <typename T>
 XorListIterator<T>& XorListIterator<T>::operator--() {
-    cur = reinterpret_cast<XorListItem<T>*>(prev->ptr^reinterpret_cast<uintptr_t>(cur));
+    cur = prev->other(cur);
     std::swap(cur, prev);
     return (*this);
 }
@@ -49,7 +49,7 @@ XorListIterator<T> XorListIterator<T>::operator--(int) {
 
 template <typename T>
 XorListIterator<T>& XorListIterator<T>::operator++() {
-    prev = reinterpret_cast<XorListItem<T>*>(cur->ptr^reinterpret_cast<uintptr_t>(prev));
+    prev = cur->other(prev);
     std::swap(cur, prev);
     return (*this);
 }

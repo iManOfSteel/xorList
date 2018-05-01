@@ -7,17 +7,15 @@
 
 int main(){
     StackAllocator<double> alloc;
-    XorList<int, std::allocator<int>> list;
-    for(int i = 0; i < 100; i++)
+    XorList<int, StackAllocator<int>> list;
+    for(int i = 0; i < 100000; i++)
         list.push_back(i);
-    for(int i = -1; i > -100; i--)
-        list.push_front(i);
     for(auto it = list.begin(); it!= list.end(); it++)
         std::cout << (*it) << ' ';
     auto it = list.begin();
     it++;
     it++;
-    //list.insert_before(list.begin(), 2);
+    list.insert_before(list.begin(), 2);
     std::cout << std::endl;
     for(auto it = list.begin(); it!= list.end(); it++)
         std::cout << (*it) << ' ';

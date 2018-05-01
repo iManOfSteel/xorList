@@ -2,7 +2,6 @@ cmake_minimum_required(VERSION 3.10)
 project(xorList)
 
 set(CMAKE_CXX_STANDARD 14)
-set(CMAKE_CXX_FLAGS -Wall,-Werror)
 
 include_directories(include)
 add_subdirectory(src)

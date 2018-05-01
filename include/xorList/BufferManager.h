@@ -10,7 +10,7 @@ public:
     BufferManager();
     pointer allocate(size_t size);
 private:
-    const size_t maxBufferSize = 100;
+    const size_t maxBufferSize = 30000;
     size_t curPos;
     std::shared_ptr<T> buffer;
 };

@@ -1,6 +1,6 @@
 #pragma once
 #include <memory>
-
+#include "xorList/Buffer.h"
 template <typename T>
 class BufferManager{
 public:
@@ -9,10 +9,10 @@ public:
     using reference = T&;
     BufferManager();
     pointer allocate(size_t size);
+    ~BufferManager();
 private:
-    const size_t maxBufferSize = 30000;
     size_t curPos;
-    std::shared_ptr<T> buffer;
+    Buffer<T>* buffer;
 };
 
 #include "BufferManager.ipp"

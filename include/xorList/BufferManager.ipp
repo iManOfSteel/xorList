@@ -1,19 +1,25 @@
 #pragma once
 #include "BufferManager.h"
+#include "Buffer.h"
 #include <iostream>
 
 template <typename T>
 BufferManager<T>::BufferManager() {
     curPos = 0;
-    buffer = std::shared_ptr<T>(static_cast<pointer>(operator new(sizeof(T) * maxBufferSize)));
+    buffer = new Buffer<T>();
+}
+
+template<typename T>
+BufferManager<T>::~BufferManager() {
+    delete buffer;
 }
 
 template<typename T>
 typename BufferManager<T>::pointer BufferManager<T>::allocate(size_t size) {
-    if(size + curPos > maxBufferSize) {
-        buffer = std::shared_ptr<T>(buffer, static_cast<pointer>(operator new(sizeof(T) * maxBufferSize)));
+    if(size + curPos > buffer->maxBufferSize) {
+        buffer = new Buffer<T>(buffer);
         curPos = 0;
     }
     curPos += size;
-    return buffer.get() + (curPos - size);
+    return buffer->buffer + (curPos - size);
 }

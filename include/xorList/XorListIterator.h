@@ -25,7 +25,7 @@ public:
     XorListIterator operator++(int);
 private:
     XorListItem<T> *prev, *cur;
-    template<typename U, typename Allocator>
+    template <typename U, typename Allocator>
     friend class XorList;
 };
 

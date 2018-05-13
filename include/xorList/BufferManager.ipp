@@ -14,12 +14,12 @@ BufferManager<T>::~BufferManager() {
     delete buffer;
 }
 
-template<typename T>
+template <typename T>
 typename BufferManager<T>::pointer BufferManager<T>::allocate(size_t size) {
     if (size + curPos > buffer->maxBufferSize) {
         buffer = new Buffer<T>(buffer);
         curPos = 0;
     }
     curPos += size;
-    return buffer->buffer + (curPos - size);
+    return buffer->buffer.get() + (curPos - size);
 }

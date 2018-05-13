@@ -3,7 +3,7 @@
 #include "XorListIterator.h"
 #include <memory>
 
-template<typename T, typename Allocator>
+template <typename T, typename Allocator>
 class XorList {
 public:
     using iterator = XorListIterator<T>;

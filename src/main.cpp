@@ -6,7 +6,7 @@
 #include <memory>
 
 int main(){
-    XorList<int, std::allocator<int>> my;
+    std::list<int, StackAllocator<int>> my;
     std::list<int, std::allocator<int>> def;
     int N = 100000;
     int t = clock();
@@ -15,6 +15,8 @@ int main(){
     for(int i = 0; i < N; i++)
         my.pop_back();
     std::cout << clock() - t << std::endl;
+    my.push_back(2);
+    my.erase(my.begin());
     t = clock();
     for(int i = 0; i < N; i++)
         def.push_back(i);

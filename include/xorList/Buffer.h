@@ -2,7 +2,7 @@
 
 #include <memory>
 
-template<typename T>
+template <typename T>
 class Buffer {
 public:
     using value_type = T;

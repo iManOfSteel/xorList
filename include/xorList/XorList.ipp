@@ -185,6 +185,7 @@ void XorList<T, Allocator>::erase(XorList::iterator it) {
         item *cur = it.cur;
         prev->ptr ^= reinterpret_cast<uintptr_t>(cur) ^ reinterpret_cast<uintptr_t>(next);
         next->ptr ^= reinterpret_cast<uintptr_t>(cur) ^ reinterpret_cast<uintptr_t>(prev);
+        delete it.cur;
     }
 
 }

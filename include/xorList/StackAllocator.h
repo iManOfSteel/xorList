@@ -3,14 +3,14 @@
 #include "BufferManager.h"
 
 template <typename T>
-class StackAllocator{
+class StackAllocator {
 public:
     using value_type = T;
     using pointer = T*;
     using reference = T&;
 
     template <typename U>
-    struct rebind{
+    struct rebind {
         using other = StackAllocator<U>;
     };
 

@@ -2,7 +2,7 @@
 #include <memory>
 #include "xorList/Buffer.h"
 template <typename T>
-class BufferManager{
+class BufferManager {
 public:
     using value_type = T;
     using pointer = T*;

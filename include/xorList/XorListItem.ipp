@@ -18,7 +18,7 @@ XorListItem<T>::~XorListItem() {}
 
 template<typename T>
 void XorListItem<T>::insert_update(XorListItem *another, XorListItem *newItem) {
-    if(another != NULL)
+    if (another != NULL)
         another->ptr ^= reinterpret_cast<uintptr_t>(this)^reinterpret_cast<uintptr_t>(newItem);
     ptr ^= reinterpret_cast<uintptr_t>(another) ^ reinterpret_cast<uintptr_t>(newItem);
 }
@@ -52,6 +52,6 @@ XorListItem<T>* XorListItem<T>::insert_after(T&& val, XorListItem* loc, XorListI
 }
 
 template <typename T>
-XorListItem<T>* XorListItem<T>::other(XorListItem *p) const{
+XorListItem<T>* XorListItem<T>::other(XorListItem *p) const {
     return reinterpret_cast<XorListItem*>(reinterpret_cast<uintptr_t>(p)^ptr);
 }

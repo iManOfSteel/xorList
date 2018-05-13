@@ -4,13 +4,13 @@
 #include <memory>
 
 template<typename T, typename Allocator>
-class XorList{
+class XorList {
 public:
     using iterator = XorListIterator<T>;
     using const_iterator = XorListIterator<const T>;
     using item  = XorListItem<T>;
     using ItemAllocator = typename Allocator::template rebind<item>::other;
-    explicit XorList(Allocator alloc = Allocator());
+    explicit XorList(const Allocator& alloc = Allocator());
     XorList(size_t count, const T& value = T(), const Allocator& alloc = Allocator());
     XorList(const XorList& other);
     XorList(XorList&& other);

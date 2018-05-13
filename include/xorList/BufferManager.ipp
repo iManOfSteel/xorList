@@ -16,7 +16,7 @@ BufferManager<T>::~BufferManager() {
 
 template<typename T>
 typename BufferManager<T>::pointer BufferManager<T>::allocate(size_t size) {
-    if(size + curPos > buffer->maxBufferSize) {
+    if (size + curPos > buffer->maxBufferSize) {
         buffer = new Buffer<T>(buffer);
         curPos = 0;
     }

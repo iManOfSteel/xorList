@@ -4,7 +4,7 @@
 #include "XorList.h"
 
 template <typename T>
-class XorListIterator{
+class XorListIterator {
 public:
     using value_type = T;
     using pointer = T*;
